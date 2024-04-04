@@ -14,6 +14,9 @@ function App() {
         setData(db);
     }, []);*/
 
+    function addToCart(item){
+        setCart((prevCart) => [...prevCart, item])
+    }
 
   return (
     <>
@@ -26,7 +29,7 @@ function App() {
                 <Guitar
                     key={guitar.id}
                     guitar={guitar}
-                    setCart={setCart}
+                    addToCart={addToCart}
                 />
             ))}
                         
