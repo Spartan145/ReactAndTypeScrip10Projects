@@ -14,8 +14,16 @@ function App() {
         setData(db);
     }, []);*/
 
-    function addToCart(item){
-        setCart((prevCart) => [...prevCart, item])
+    function addToCart(newItem){
+        const itemExist = cart.findIndex( item => item.id === newItem.id);
+        if(itemExist === -1){
+            newItem.quantity = 1;
+            setCart([...cart, newItem]);
+        }else{
+            const tempCart = [...cart];
+            tempCart[itemExist].quantity++;
+            setCart(tempCart);
+        }
     }
 
   return (
