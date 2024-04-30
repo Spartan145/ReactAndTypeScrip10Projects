@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-export default function Header({cart}){
+export default function Header({cart, removeItem, increaseQuantity, decreaseQuantity}){
     //Derived State
     const isEmpty = useMemo(() => cart.length === 0,[cart]);
     const cartTotal = useMemo(() => cart.reduce((total, item) => total + (item.quantity * item.price), 0), [cart]);
@@ -49,6 +49,7 @@ export default function Header({cart}){
                                                             <button
                                                                 type="button"
                                                                 className="btn btn-dark"
+                                                                onClick={() => decreaseQuantity(item.id)}
                                                             >
                                                                 -
                                                             </button>
@@ -56,6 +57,7 @@ export default function Header({cart}){
                                                             <button
                                                                 type="button"
                                                                 className="btn btn-dark"
+                                                                onClick={() => increaseQuantity(item.id)}
                                                             >
                                                                 +
                                                             </button>
@@ -64,6 +66,7 @@ export default function Header({cart}){
                                                             <button
                                                                 className="btn btn-danger"
                                                                 type="button"
+                                                                onClick={() => removeItem(item.id)}
                                                             >
                                                                 X
                                                             </button>
