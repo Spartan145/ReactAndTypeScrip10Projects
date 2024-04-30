@@ -4,6 +4,9 @@ import Guitar from "./components/Guitar";
 import { db } from "./data/db";
 
 function App() {
+    //General variables
+    const MAX_ITEMS = 5;
+    const MINIMUM_ITEMS = 1;
     //States
     //const [data, setData] = useState([]);
     const [data, setData] = useState(db);
@@ -30,17 +33,29 @@ function App() {
         setCart(prevCart => prevCart.filter(guitar => guitar.id !== id));
     }
 
-    function increaseQuantity(id){
-        const itemKey = cart.findIndex( item => item.id === id);
-        const tempCart = [...cart];
-        tempCart[itemKey].quantity++;
+    function increaseQuantity(id){        
+        const tempCart = cart.map(item => {
+            if(item.id === id && item.quantity<MAX_ITEMS){
+                return{
+                    ...item,
+                    quantity: item.quantity + 1//For some reason putting ++ here does not work in react to increase the number.
+                }
+            }
+            return item
+        })
         setCart(tempCart);       
     }
 
     function decreaseQuantity(id){
-        const itemKey = cart.findIndex( item => item.id === id);
-        const tempCart = [...cart];
-        tempCart[itemKey].quantity--;
+        const tempCart = cart.map(item => {
+            if(item.id === id && item.quantity>MINIMUM_ITEMS){
+                return{
+                    ...item,
+                    quantity: item.quantity - 1//For some reason putting ++ here does not work in react to increase the number.
+                }
+            }
+            return item
+        })
         setCart(tempCart);
     }
 
