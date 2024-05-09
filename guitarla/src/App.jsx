@@ -7,15 +7,24 @@ function App() {
     //General variables
     const MAX_ITEMS = 5;
     const MINIMUM_ITEMS = 1;
+    const initialCart = () => {
+        const localStorageCart = localStorage.getItem('cart')
+        return localStorageCart ? JSON.parse(localStorageCart) : []
+    }
     //States
     //const [data, setData] = useState([]);
     const [data, setData] = useState(db);
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState(initialCart);
 
     //Effects
     /*/useEffect(() => {
         setData(db);
     }, []);*/
+
+
+    useEffect(() => {
+        localStorage.setItem('cart',JSON.stringify(cart));
+    }, [cart])    
 
     function addToCart(newItem){
         const itemExist = cart.findIndex( item => item.id === newItem.id);
@@ -26,11 +35,11 @@ function App() {
             const tempCart = [...cart];
             tempCart[itemExist].quantity++;
             setCart(tempCart);
-        }
+        }        
     }
 
     function removeItem(id){
-        setCart(prevCart => prevCart.filter(guitar => guitar.id !== id));
+        setCart(prevCart => prevCart.filter(guitar => guitar.id !== id));        
     }
 
     function increaseQuantity(id){        
@@ -61,7 +70,7 @@ function App() {
 
     function clearCart(){
         setCart([]);
-    }
+    }    
 
   return (
     <>
