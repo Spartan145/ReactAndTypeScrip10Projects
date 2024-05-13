@@ -10,6 +10,9 @@ export type CartItem = Guitar & {//Example to extend a Type or inheritance in Ty
     quantity : number
 }
 
+//Looup example, in case you need just an specific value defines in a class
+export type GuitarID = Guitar['id']
+
 //Utility types used to especify which attributes I want to inherit from another type    
 export type CartItemPick = Pick<Guitar, 'id' | 'name' | 'price'> & {//Choose the attributes you need
     quantity : number

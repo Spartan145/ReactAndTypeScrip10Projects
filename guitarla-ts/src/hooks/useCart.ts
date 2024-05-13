@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { db } from "../data/db";
 
 //Types
-import type {Guitar, CartItem} from '../types'
+import type {Guitar, GuitarID, CartItem} from '../types'
 
 //Hooks name should always start with use
 //Hooks must be defined in JS/TS files, not JSX or TSX
@@ -43,11 +43,11 @@ export const useCart = () => {
         }        
     }
 
-    function removeItem(id){
+    function removeItem(id : GuitarID){
         setCart(prevCart => prevCart.filter(guitar => guitar.id !== id));        
     }
 
-    function increaseQuantity(id){        
+    function increaseQuantity(id : GuitarID){        
         const tempCart = cart.map(item => {
             if(item.id === id && item.quantity<MAX_ITEMS){
                 return{
@@ -60,7 +60,7 @@ export const useCart = () => {
         setCart(tempCart);       
     }
 
-    function decreaseQuantity(id){
+    function decreaseQuantity(id : Guitar['id']){//Applied another example of lookup for the id, this means a I do not need to create an specific type just for this.
         const tempCart = cart.map(item => {
             if(item.id === id && item.quantity>MINIMUM_ITEMS){
                 return{
