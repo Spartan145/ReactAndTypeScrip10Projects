@@ -1,6 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 import { db } from "../data/db";
 
+//Types
+import type {CartItem} from '../types'
+
 //Hooks name should always start with use
 //Hooks must be defined in JS/TS files, not JSX or TSX
 //Hooks are basically functions you can declare them as function XXX or arrow function like in this example
@@ -8,6 +11,7 @@ export const useCart = () => {
     //General variables
     const MAX_ITEMS = 5;
     const MINIMUM_ITEMS = 1;
+
     const initialCart = () => {
         const localStorageCart = localStorage.getItem('cart')
         return localStorageCart ? JSON.parse(localStorageCart) : []
