@@ -31,10 +31,10 @@ export const useCart = () => {
         localStorage.setItem('cart',JSON.stringify(cart));
     }, [cart])    
 
-    function addToCart(item: Guitar){
-        const itemExist = cart.findIndex( item => item.id === item.id);
+    function addToCart(itemToAdd: Guitar){
+        const itemExist = cart.findIndex( item => item.id === itemToAdd.id);
         if(itemExist === -1){
-            const newItem : CartItem = {...item, quantity : 1}            
+            const newItem : CartItem = {...itemToAdd, quantity : 1}            
             setCart([...cart, newItem]);
         }else{
             const tempCart = [...cart];
