@@ -1,3 +1,5 @@
+import type {Guitar} from '../types'//If the type file is not called index.ts I need to specify the full name of the file here
+
 export const db : Guitar[] = [
   {
       id: 1,

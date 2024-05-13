@@ -1,4 +1,4 @@
-type Guitar = {//Defines the class for my db object, this is a example of Type
+export type Guitar = {//Defines the class for my db object, this is a example of Type
     id : number
     name : string
     image : string
@@ -13,8 +13,3 @@ type Guitar = {//Defines the class for my db object, this is a example of Type
     description : string
     price : number
 }*/
-
-type GuitarProps = {
-    guitar : Guitar,
-    addToCart : (item: Guitar) => void
-}

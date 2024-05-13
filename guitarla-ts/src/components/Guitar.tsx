@@ -1,3 +1,10 @@
+import type {Guitar} from '../types'//If the type file is not called index.ts I need to specify the full name of the file here
+
+type GuitarProps = {//Is best practice to leave specific component types inside the same component file, only separate them if more than 1 component will use this type.
+    guitar : Guitar,
+    addToCart : (item: Guitar) => void
+}
+
 export default function Guitar({guitar, addToCart} : GuitarProps){
     const {name, image, description, price} = guitar;
 
