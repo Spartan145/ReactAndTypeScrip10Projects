@@ -12,7 +12,7 @@ export const useCart = () => {
     const MAX_ITEMS = 5;
     const MINIMUM_ITEMS = 1;
 
-    const initialCart = () => {
+    const initialCart = () : CartItem[] => {
         const localStorageCart = localStorage.getItem('cart')
         return localStorageCart ? JSON.parse(localStorageCart) : []
     }

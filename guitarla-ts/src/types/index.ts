@@ -10,6 +10,15 @@ export type CartItem = Guitar & {//Example to extend a Type or inheritance in Ty
     quantity : number
 }
 
+//Utility types used to especify which attributes I want to inherit from another type    
+export type CartItemPick = Pick<Guitar, 'id' | 'name' | 'price'> & {//Choose the attributes you need
+    quantity : number
+}
+
+export type CartItemOmit = Omit<Guitar, 'id' | 'name' | 'price'> & {//Choose the attributes you DONT need
+    quantity : number
+}
+
 /*interface Guitar = {//Defines the class for my db object, this is a example of Interface
     id : number
     name : string
