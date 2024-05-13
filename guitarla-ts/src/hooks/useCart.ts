@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { db } from "../data/db";
 
 //Types
-import type {CartItem} from '../types'
+import type {Guitar, CartItem} from '../types'
 
 //Hooks name should always start with use
 //Hooks must be defined in JS/TS files, not JSX or TSX
@@ -31,10 +31,10 @@ export const useCart = () => {
         localStorage.setItem('cart',JSON.stringify(cart));
     }, [cart])    
 
-    function addToCart(newItem){
-        const itemExist = cart.findIndex( item => item.id === newItem.id);
+    function addToCart(item: Guitar){
+        const itemExist = cart.findIndex( item => item.id === item.id);
         if(itemExist === -1){
-            newItem.quantity = 1;
+            const newItem : CartItem = {...item, quantity : 1}            
             setCart([...cart, newItem]);
         }else{
             const tempCart = [...cart];
