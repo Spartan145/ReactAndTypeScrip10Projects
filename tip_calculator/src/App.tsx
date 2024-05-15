@@ -1,5 +1,16 @@
 import { ThemeProvider } from "@/components/theme-provider"
 import { ModeToggle } from "./components/mode-toggle"
+import { menuItems } from "./data/db"
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+
 
 function App() {  
 
@@ -12,8 +23,33 @@ function App() {
           <ModeToggle></ModeToggle>
         </nav>                
       </header>
-      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
-        
+      <main className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 sm:flex-row flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10 ">
+        <Card className="basis-1/2">
+          <CardHeader>
+            <CardTitle>Products</CardTitle>
+            <CardDescription>Select any products you need</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {menuItems.map((item) => (            
+              <p key={item.id}>{item.name}</p>                
+            ))}
+          </CardContent>
+          <CardFooter>
+            <p>End</p>
+          </CardFooter>
+        </Card>
+        <Card className="basis-1/2">
+          <CardHeader>
+            <CardTitle>Total</CardTitle>
+            <CardDescription>The total is displayed here</CardDescription>
+          </CardHeader>
+          <CardContent>            
+            <p>Total</p>                            
+          </CardContent>
+          <CardFooter>
+            <p>End</p>
+          </CardFooter>
+        </Card>
       </main>
     </div>
     </ThemeProvider>        
