@@ -1,7 +1,20 @@
-import React from 'react'
+import type { MenuItem } from "../types"
+import { Button } from "@/components/ui/button"
 
-export default function MenuItem() {
+type MenuItemProps = {
+  item : MenuItem
+}
+
+export default function MenuItem( {item} : MenuItemProps ) {
   return (
-    <div>MenuItem</div>
+    <Button variant="outline" className="
+      w-full
+      p-3
+      flex
+      justify-between      
+    ">
+      <p>{item.name}</p>
+      <p className="font-bold">${item.price}</p>
+    </Button>
   )
 }
