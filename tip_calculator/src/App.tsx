@@ -12,12 +12,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import OrderContentCard from "./components/OrderContentCard"
 
 
 
 function App() {
 
-  const { addItem } = useOrder();
+  const { order, addItem } = useOrder();
 
   return (        
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -46,18 +47,9 @@ function App() {
             <p>End</p>
           </CardFooter>
         </Card>
-        <Card className="basis-1/2 border-t-lime-700 border-t-4 shadow-md">
-          <CardHeader>
-            <CardTitle>Total</CardTitle>
-            <CardDescription>The total is displayed here</CardDescription>
-          </CardHeader>
-          <CardContent>            
-            <p>Total</p>                            
-          </CardContent>
-          <CardFooter>
-            <p>End</p>
-          </CardFooter>
-        </Card>
+        <OrderContentCard
+          order={order}
+        ></OrderContentCard>
       </main>
     </div>
     </ThemeProvider>        
