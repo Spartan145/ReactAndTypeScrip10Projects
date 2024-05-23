@@ -2,6 +2,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 import { ModeToggle } from "./components/mode-toggle"
 import { menuItems } from "./data/db"
 import MenuItem from "./components/MenuItem"
+import useOrder from "./hooks/useOrder"
 
 import {
   Card,
@@ -14,7 +15,9 @@ import {
 
 
 
-function App() {  
+function App() {
+
+  const { addItem } = useOrder();
 
   return (        
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -35,7 +38,8 @@ function App() {
             {menuItems.map((item) => (            
               <MenuItem 
               key={item.id}
-              item={item}></MenuItem>                
+              item={item}
+              addItem={addItem}></MenuItem>                
             ))}
           </CardContent>
           <CardFooter>
