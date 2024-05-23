@@ -9,18 +9,21 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-  } from "@/components/ui/card"
+} from "@/components/ui/card"
 
-  import {
+import {
     Table,
     TableBody,    
     TableCell,
     TableHead,
     TableHeader,
     TableRow,
-  } from "@/components/ui/table"
+} from "@/components/ui/table"
 
+//HELPERS
+import { formatCurrency } from "@/helpers"
 
+//TYPES
 type OrderContentCardProps = {
     order: OrderItem[]
 }
@@ -50,7 +53,7 @@ export default function OrderContentCard( {order} : OrderContentCardProps) {
                             <TableRow key={item.id}>
                             <TableCell className="text-left font-medium">{item.name}</TableCell>
                             <TableCell className="text-center">{item.quantity}</TableCell>
-                            <TableCell className="text-center">${item.price*item.quantity}</TableCell>
+                            <TableCell className="text-center">{formatCurrency(item.price*item.quantity)}</TableCell>
                             <TableCell className="text-center">
                                 <Button variant="destructive" size="icon">
                                     <CircleX className="h-4 w-4" />
@@ -66,7 +69,7 @@ export default function OrderContentCard( {order} : OrderContentCardProps) {
                 <></>
             ):(
                 <CardFooter>
-                <p className="text-xl text-center font-extrabold">TOTAL TO PAY IS: ${order.reduce((accum,item) => accum + (item.price * item.quantity), 0)}</p>
+                <p className="text-xl text-center font-extrabold">TOTAL TO PAY IS: {formatCurrency(order.reduce((accum,item) => accum + (item.price * item.quantity), 0))}</p>
                 </CardFooter>
             )}          
         </Card>
