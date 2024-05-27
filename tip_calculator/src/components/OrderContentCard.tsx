@@ -22,6 +22,7 @@ import {
 
 //HELPERS
 import { formatCurrency } from "@/helpers"
+import OrderTotals from "./OrderTotals"
 
 //TYPES
 type OrderContentCardProps = {
@@ -69,8 +70,8 @@ export default function OrderContentCard( {order, removeItem} : OrderContentCard
             {order.length===0?(
                 <></>
             ):(
-                <CardFooter>
-                <p className="text-xl text-center font-extrabold">TOTAL TO PAY IS: {formatCurrency(order.reduce((accum,item) => accum + (item.price * item.quantity), 0))}</p>
+                <CardFooter className="flex-col">
+                <OrderTotals order={order}></OrderTotals>
                 </CardFooter>
             )}          
         </Card>
