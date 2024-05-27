@@ -15,9 +15,14 @@ export default function useOrder() {
         }            
     }
 
+    const removeItem = (id : MenuItem['id']) => {//use a lookup to determine the ID type
+        setOrder(order.filter(item => item.id !== id))
+    }
+
     const [order, setOrder] = useState<OrderItem[]>([]) //Example of setting a generic type
     return {
         order,
-        addItem
+        addItem,
+        removeItem
     }
 }

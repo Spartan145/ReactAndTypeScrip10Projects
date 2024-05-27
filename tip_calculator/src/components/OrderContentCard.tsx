@@ -1,4 +1,4 @@
-import { OrderItem } from "@/types"
+import { MenuItem, OrderItem } from "@/types"
 import { CircleX } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
@@ -25,10 +25,11 @@ import { formatCurrency } from "@/helpers"
 
 //TYPES
 type OrderContentCardProps = {
-    order: OrderItem[]
+    order: OrderItem[],
+    removeItem : (id : MenuItem['id']) => void
 }
 
-export default function OrderContentCard( {order} : OrderContentCardProps) {
+export default function OrderContentCard( {order, removeItem} : OrderContentCardProps) {
     return(
         <Card className="basis-1/2 border-t-lime-700 border-t-4 shadow-md">
           <CardHeader>
@@ -55,7 +56,7 @@ export default function OrderContentCard( {order} : OrderContentCardProps) {
                             <TableCell className="text-center">{item.quantity}</TableCell>
                             <TableCell className="text-center">{formatCurrency(item.price*item.quantity)}</TableCell>
                             <TableCell className="text-center">
-                                <Button variant="destructive" size="icon">
+                                <Button variant="destructive" size="icon" onClick={() => removeItem(item.id)}>
                                     <CircleX className="h-4 w-4" />
                                 </Button>
                             </TableCell>
