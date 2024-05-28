@@ -1,6 +1,7 @@
 import { formatCurrency } from '@/helpers'
 import { OrderItem } from '@/types'
 import { useMemo } from 'react'
+import TipsForm from '../TipsForm'
 
 //TYPES
 type OrderTotalsProps = {
@@ -12,8 +13,8 @@ export default function OrderTotals({order} : OrderTotalsProps) {
 
     return (
         <>
-            <p className="text-xl text-left font-extrabold w-full">Subtotal: {subTotalAmount}</p>
-            <p className="text-xl text-left font-extrabold w-full">Tip: </p>
+            <p className="text-xl text-left font-extrabold w-full">Subtotal: {subTotalAmount}</p>            
+            <TipsForm></TipsForm>
             <p className="text-xl text-left font-extrabold w-full">Total: </p>
         </>        
     )
