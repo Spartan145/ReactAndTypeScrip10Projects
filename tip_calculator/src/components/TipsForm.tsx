@@ -20,7 +20,7 @@ export default function TipsForm(){
         },
     ]
     return (
-        <RadioGroup className="text-xl text-left font-extrabold w-full" defaultValue={tipOptions[0].id}>
+        <RadioGroup className="text-xl text-left font-extrabold w-full gap-2" defaultValue={tipOptions[0].id}>
             
             <div className="flex items-center space-x-2">
                 <RadioGroupItem value="option-one" id="option-one" />
