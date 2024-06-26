@@ -18,7 +18,7 @@ import OrderContentCard from "./components/OrderContentCard"
 
 function App() {
 
-  const { order, addItem, removeItem } = useOrder();
+  const { order, tip, setTip, addItem, removeItem } = useOrder();
 
   return (        
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
@@ -50,6 +50,8 @@ function App() {
         <OrderContentCard
           order={order}
           removeItem={removeItem}
+          tip={tip}          
+          setTip={setTip}
         ></OrderContentCard>
       </main>
     </div>

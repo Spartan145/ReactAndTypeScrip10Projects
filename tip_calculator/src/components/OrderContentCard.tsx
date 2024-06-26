@@ -23,14 +23,18 @@ import {
 //HELPERS
 import { formatCurrency } from "@/helpers"
 import OrderTotals from "./OrderTotals"
+import TipsForm from "./TipsForm"
+import { Separator } from "./ui/separator"
 
 //TYPES
 type OrderContentCardProps = {
     order: OrderItem[],
-    removeItem : (id : MenuItem['id']) => void
+    removeItem : (id : MenuItem['id']) => void,
+    tip : number,
+    setTip : React.Dispatch<React.SetStateAction<number>>
 }
 
-export default function OrderContentCard( {order, removeItem} : OrderContentCardProps) {
+export default function OrderContentCard( {order, removeItem, tip, setTip} : OrderContentCardProps) {
     return(
         <Card className="basis-1/2 border-t-lime-700 border-t-4 shadow-md">
           <CardHeader>
@@ -71,7 +75,15 @@ export default function OrderContentCard( {order, removeItem} : OrderContentCard
                 <></>
             ):(
                 <CardFooter className="flex-col">
-                <OrderTotals order={order}></OrderTotals>
+                <div className="grid gap-3 w-full">
+                <Separator className="my-2" />                
+                <TipsForm 
+                    tip={tip}
+                    setTip={setTip}
+                />
+                <Separator className="my-2" />                                
+                <OrderTotals order={order} tip={tip}></OrderTotals>
+                </div>
                 </CardFooter>
             )}          
         </Card>

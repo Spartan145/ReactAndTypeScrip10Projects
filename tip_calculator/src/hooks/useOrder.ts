@@ -20,8 +20,12 @@ export default function useOrder() {
     }
 
     const [order, setOrder] = useState<OrderItem[]>([]) //Example of setting a generic type
+    const [tip, setTip] = useState(0)
+
     return {
         order,
+        tip,
+        setTip,
         addItem,
         removeItem
     }

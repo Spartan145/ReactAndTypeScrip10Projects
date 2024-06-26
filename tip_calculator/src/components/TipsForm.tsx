@@ -1,7 +1,13 @@
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 
-export default function TipsForm(){
+//PROPS
+type TipsFormProps = {    
+    tip : number,
+    setTip : React.Dispatch<React.SetStateAction<number>>
+}
+
+export default function TipsForm({setTip} : TipsFormProps){
     const tipOptions = [
         {
             id: 'tip-10',
@@ -18,15 +24,15 @@ export default function TipsForm(){
             value: .50,
             label: '50%'
         },
-    ]
+    ]    
     return (
         <>
-        <div className="font-semibold">Tip selector</div>
-        <RadioGroup className="text-xl text-left font-extrabold w-full" defaultValue={tipOptions[0].id}>
+        <p className="text-xl text-left font-extrabold w-full">Tip selector: </p>
+        <RadioGroup className="text-xl text-left font-extrabold w-full">
             {tipOptions.map(tip => (
                 <div key={tip.id}className="flex items-center space-x-2">
-                    <RadioGroupItem value={tip.id} id={tip.id}/>
-                    <Label htmlFor={tip.id}>{tip.label}</Label>
+                    <RadioGroupItem value={tip.value.toString()} id={tip.id} onClick={() => setTip(tip.value)}/>
+                    <Label htmlFor={tip.id} onClick={() => setTip(tip.value)}>{tip.label}</Label>
                 </div>
             ))}
         </RadioGroup>
