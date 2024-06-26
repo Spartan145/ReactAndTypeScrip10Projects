@@ -15,8 +15,7 @@ export default function OrderTotals({order} : OrderTotalsProps) {
     return (
         <>
             <div className="grid gap-3 w-full">
-                <Separator className="my-2" />
-                <div className="font-semibold">Order Details</div>
+                <Separator className="my-2" />                
                 <TipsForm></TipsForm>
                 <Separator className="my-2" />
                 <p className="text-xl text-left font-extrabold w-full">Subtotal: {subTotalAmount}</p>                        

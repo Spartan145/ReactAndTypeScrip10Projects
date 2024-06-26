@@ -20,16 +20,16 @@ export default function TipsForm(){
         },
     ]
     return (
-        <RadioGroup className="text-xl text-left font-extrabold w-full gap-2" defaultValue={tipOptions[0].id}>
-            
-            <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-one" id="option-one" />
-                <Label htmlFor="option-one">Option One</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-                <RadioGroupItem value="option-two" id="option-two" />
-                <Label htmlFor="option-two">Option Two</Label>
-            </div>
+        <>
+        <div className="font-semibold">Tip selector</div>
+        <RadioGroup className="text-xl text-left font-extrabold w-full" defaultValue={tipOptions[0].id}>
+            {tipOptions.map(tip => (
+                <div key={tip.id}className="flex items-center space-x-2">
+                    <RadioGroupItem value={tip.id} id={tip.id}/>
+                    <Label htmlFor={tip.id}>{tip.label}</Label>
+                </div>
+            ))}
         </RadioGroup>
+        </>        
     )
 }
