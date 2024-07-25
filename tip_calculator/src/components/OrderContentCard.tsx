@@ -57,10 +57,10 @@ export default function OrderContentCard( {order, removeItem, tip, setTip} : Ord
                     <TableBody>   
                         {order.map(item => (
                             <TableRow key={item.id}>
-                            <TableCell className="text-left font-medium">{item.name}</TableCell>
-                            <TableCell className="text-center">{item.quantity}</TableCell>
-                            <TableCell className="text-center">{formatCurrency(item.price*item.quantity)}</TableCell>
-                            <TableCell className="text-center">
+                            <TableCell className="text-left font-medium p-1">{item.name}</TableCell>
+                            <TableCell className="text-center p-1">{item.quantity}</TableCell>
+                            <TableCell className="text-center p-1">{formatCurrency(item.price*item.quantity)}</TableCell>
+                            <TableCell className="text-center p-1">
                                 <Button variant="destructive" size="icon" onClick={() => removeItem(item.id)}>
                                     <CircleX className="h-4 w-4" />
                                 </Button>
@@ -83,7 +83,7 @@ export default function OrderContentCard( {order, removeItem, tip, setTip} : Ord
                 />
                 <Separator className="my-2" />                                
                 <OrderTotals order={order} tip={tip}></OrderTotals>
-                </div>
+                </div>                
                 </CardFooter>
             )}          
         </Card>
